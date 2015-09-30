@@ -1,0 +1,147 @@
+---
+title: "Philosophy of Data Science"
+author: "Kevin A. Ryan (JHUAPL)"
+date: "Monday, August 31, 2015"
+output:
+  html_document:
+    highlight: haddock
+    theme: journal
+---
+
+---
+
+####This is a quick reference for how you use GitHub####
+
+1. Create a repo on GitHub.com and initialize it.
+2. Open desktop GitHub
+3. Clone the repo you just created on GitHub.com
+4. Select the _data directory to store the local copy
+5. Open R-Studio
+6. Create a new project in R-Studio
+                - creat from "Existing Directory"...option #2
+                - click - "Create Project"
+7. Open R-studio
+                - make a small change to the README.md file
+                - save the project and close R studio
+8. Open GitHub desktop
+                - select the appropriate repo for list at left
+                - Click on "xx Uncommited Changes"
+                - Write a summary and description
+                - click "commit to master"
+                - click "Sync"
+9. Check GitHub.com to ensure the hello world comment is committed.
+```{r}
+download.file("https://dl.dropboxusercontent.com/u/7710864/data/ravensData.rda"
+, destfile="./data/ravensData.rda",method="curl")
+```
+
+
+---
+
+####Papers on Advanced/Interesting uses of R####
+[Misc uses of R](http://www.rdatamining.com/examples/other)
+
+[Using the Google Visualization API with R](http://journal.r-project.org/archive/2011-2/RJournal_2011-2_Gesmann+de~Castillo.pdf)
+
+[Parametric vs. Non-Parametric Models](https://chemicalstatistician.wordpress.com/2014/01/14/machine-learning-lesson-of-the-day-parametric-vs-non-parametric-models/)
+
+[Mapping GDELT data in R](http://quantifyingmemory.blogspot.co.uk/2013/04/mapping-gdelt-data-in-r-and-some.html)
+
+[Twitter sentament analysis based on effected lexicons](http://analyzecore.com/2014/05/11/twitter-sentiment-analysis-based-on-affective-lexicons-in-r/)
+```{r}
+library(lubridate)
+t <- read.table("GDELTproject/data/select.outfile.txt", sep = "\t")
+colnames(t) <- c("Day", "Actor1Code", "Actor2Code", "EventCode", "QuadCategory", 
+    "GoldsteinScale", "Actor1Geo_Lat", "Actor1Geo_Long", "Actor2Geo_Lat", "Actor2Geo_Long", 
+    "ActionGeo_Lat", "ActionGeo_Long")
+t$Day <- ymd(t$Day)
+save(t, file = "gdeltRus.Rdata")
+```
+
+
+
+####Recent papers on the importance of structure and reproducibility of analysis####  
+[More retracted or revised scientific papers and the concept of reanalysis](http://www.nytimes.com/interactive/2015/05/28/science/retractions-scientific-studies.html)
+
+[Atlantic article on effect size](http://www.theatlantic.com/health/archive/2015/08/psychology-studies-reliability-reproducability-nosek/402466/)
+
+
+Many analysts are writing and talking about the need for more rigor in analysis.  This  [article](https://www.washingtonpost.com/news/speaking-of-science/wp/2015/08/27/trouble-in-science-massive-effort-to-reproduce-100-experimental-results-succeeds-only-36-times/) from the Washington Post summarizes a [this study](https://osf.io/ezcuj/wiki/home/) also weighs in on the Recent debate about whether scienctific process is broken].  More commentary was provided in this [article](http://fivethirtyeight.com/features/science-isnt-broken/#part2) from the blog by data scientist Nate Silver.  
+
+[kaggle - titanic](https://www.kaggle.com/c/titanic)
+
+####More misc papers on data science####
+
+[Data science is still white hot, but nothing lasts forever](http://fortune.com/2015/05/21/data-science-white-hot/) Summary:BE aware of the fakes....But hiring a data scientist presupposes that there is a data scientist out there to hire and therein lies a problem. According to Dr. Tara Sinclair, Indeed.com’s chief economist, the number of job postings for data scientist grew 57% for the first quarter this year compared to the year-ago quarter. And searches for data scientist grew 73.5% for the same period.
+
+One problem with job post data is that “data scientist” is a loosey-goosey term. Generally speaking, practitioners are expected to know statistical analysis, predictive modeling and programming. Oh, and having a certain artistic flair to guide how results are visualized is a definite plus. But ask a dozen hiring managers and you may get a dozen variations on that theme.
+
+[How Big Data Is Blurring Industry Lines At Companies Like Nike](http://www.forbes.com/sites/teradata/2014/12/12/how-big-data-is-blurring-industry-lines-at-companies-like-nike/) The big “takeaway” is that a product like the Nike FuelBand is not chosen by consumers because of traditional features such as fashion or comfort; it is chosen when consumers decide that the data it collects and the analytics it enables surpass what is offered by the competition. This allows it to ingrain itself into the sports and fitness lifestyle of its customers.  Traditional product companies like Nike are now competing directly on analytics with analytic-based products. This blurring of industry lines represents a major change that we can expect to continue in the coming years. What opportunities does your organization have to create products based upon analytics?
+
+[Palantir and Machine learning](http://www.quora.com/How-important-is-machine-learning-to-what-Palantir-is-doing#)Palantir is almost entirely an analyst driven tool: your data is a huge rock that needs to be moved, and Palantir is the lever.  In almost every video on Palantir's analysis blog (http://www.palantir.com/category...) what you're seeing is somebody going through the steps of looking at a piece of data that has been presented to them, making a conscious decision about what aspect of that data to explore further, and using Palantir to let them explore the data easily and quickly.  The computer doesn't decide which piece of data to present, or how much data to present, or even how to present the data; Palantir simply makes it very easy for human analysts to make these decisions.
+
+[Data Scientist: The Sexiest Job of the 21st Century](https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century/)Summary:  Back in the 1990s, computer engineer and Wall Street “quant” were the hot occupations in business. Today data scientists are the hires firms are competing to make. As companies wrestle with unprecedented volumes and types of information, demand for these experts has raced well ahead of supply. Indeed, Greylock Partners, the VC firm that backed Facebook and LinkedIn, is so worried about the shortage of data scientists that it has a recruiting team dedicated to channeling them to the businesses in its portfolio. Data scientists are the key to realizing the opportunities presented by big data. They bring structure to it, find compelling patterns in it, and advise executives on the implications for products, processes, and decisions. They find the story buried in the data and communicate it. And they don’t just deliver reports: They get at the questions at the heart of problems and devise creative approaches to them. One data scientist who was studying a fraud problem, for example, realized it was analogous to a type of DNA sequencing problem. Bringing those disparate worlds together, he crafted a solution that dramatically reduced fraud losses.
+
+[All Scientists Should Be Militant Atheists](http://www.newyorker.com/news/news-desk/all-scientists-should-be-militant-atheists?mbid=social_facebook)In science, of course, the very word “sacred” is profane. No ideas, religious or otherwise, get a free pass. The notion that some idea or concept is beyond question or attack is anathema to the entire scientific undertaking. 
+
+
+[Good quote by Shel Silverstein](http://encurious.com/post/90982259223/quotes-from-childrens-books)Listen to the mustn'ts, child.  Listen to the don'ts. Listen to the shouldn't,. the impossibles, the won'ts.  Listen to the never haves, then listen close to me....ANYTHING can happen, child, anything can be.  
+
+#####Quantitative Trading and R#####
+[Worth a shot when the time is right](http://www.thertrader.com/)
+
+
+From Peng's book:
+Recently, there’s been a lot of discussion of reproducibility in the media and in the scientific literature. The journal Science had a special issue on reproducibility and data replication. Other journals of updated policies on publication to encourage reproducibility. In 2012, a feature on the TV show 60 minutes looked at a major incident at Duke University where many results involving a promising cancer test were found to be not reproducible. This led to a number of studies and clinical trials having to be stopped, followed by a investigation which is still ongoing.
+
+Finally, the Institute of Medicine, in response to a lot of recent events involving reproducibility of scientific studies, issued a report saying that best practices should be done to promote and encourage reproducibility, particularly in what’s called ‘omics based research, such as genomics, proteomics, other similar areas involving high-throughput biological measurements. This was a very important report. Of the many recommendations that the IOM made, the key ones were that:
+- Data and metadata need to be made available;
+- Computer code should be fully specified, so that people can examine it to see what was done;
+- All the steps of the computational analysis, including any preprocessing of data, should be fully described so that people can study it and reproduce it.
+
+
+---
+
+####Current events in NSAD Analysis####
+
+NSAD recently designed a complex psycho-physiological study for the [Asymmetric Warfare Group](http://www.awg.army.mil/). The study was about adaptability in individual Army soldiers.  We defined *Adaptability as an effective change in behavior in response to an altered situation while operating within the commander’s intent.* NSAD was tasked by AWG to determine if Adaptability can it be measured in an individual. If so, what are the metrics to measure adaptive behavior? 
+
+To accomplish this study, the team knew that conducting good science would not be enough to fully meet the needs of the sponsor.  Since AWG falls under [TRADOC](http://www.tradoc.army.mil/), the NSAD team understood the long term potential of results of this study.  The team understood that the study results had the potential to influence the way the Army recruits, trains, and retains soldiers.  As such, the technical approach would need to be simultaneously *defensible* and abundently *transparent* to anyone who might read the work. The work would need to be designed in a manner that, if the results produced a particular insight that was controversial, the entire experiment could be easily reproduced.   Obvioulsy, to produce a defensible analysis, the work would need to be built off of primary research. After spending the first portion of the project defining the state of the practice, the team began designing a robust analysis pipeline.  
+
+```{r fig.width=6, fig.align='center', echo=FALSE, warning=FALSE}
+library(png)
+library(grid)
+img <- readPNG("images/overview.png")
+ grid.raster(img)
+```
+*Fig 1: Overview of the NSAD analysis pipeline.*  
+
+---
+
+####Literate Statistical Programming####
+
+One basic idea to make writing reproducible reports easier is what’s known as literate statistical programing (or sometimes called literate statistical practice).[Article here](https://www.r-project.org/conferences/DSC-2001/Proceedings/Rossini.pdf). This comes from the idea of literate programming in the area of writing computer programs.  
+
+The idea is to think of a report or a publication as a stream of text and code.
+The text is readable by people and the code is readable by computers. The
+analysis is described in a series of text and code chunks. Each kind of code
+chunk will do something like load some data or compute some results. Each
+text chunk will relay something in a human readable language. There might
+also be presentation code that formats tables and figures and there’s article
+text that explains what’s going on around all this code. This stream of text
+and code is a literate statistical program or a literate statistical analysis.
+
+Literate programs by themselves are a bit difficult to work with, but they can be processed in two important ways. Literate programs can be **weaved** to produce human readable documents like PDFs or HTML web pages, and they can **tangled** to produce machine-readable “documents”, or in other words, machine readable code. The basic idea behind literate programming in order to generate the different kinds of output you might need, you only need a single source document—you can weave and tangle to get the rist. In order to use a system like this you need a documentational language, that’s human readable, and you need a programming language that’s machine readable (or can be compiled/interpreted into something that’s machine readable).
+
+---
+
+
+####In summary####
+ 
+1. NSAD has recently developed processes 
+
+2. Start with a Good Study Question that is based in Good Science
+
+3. Remember the Analysis Pipeline
+
+---
