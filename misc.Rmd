@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+author: "Kevin A. Ryan (JHUAPL)"
+date: "Monday, September 21, 2015"
+output: html_document
+---
+
+```{r}
+T[[1]]<-"9 6 2015"
+T[[2]]<-"6 6 2015"
+actual<-as.Date(T[[1]],"%d %m %Y")
+expected<-as.Date(T[[2]],"%d %m %Y")
+actualy<-as.numeric(format(actual,"%Y"))
+actualm<-as.numeric(format(actual,"%m"))
+expectedy<-as.numeric(format(expected,"%Y"))
+expectedm<-as.numeric(format(expected,"%m"))
+
+out<-ifelse(actual<=expected,0,ifelse(actualy==expectedy,ifelse(actualm==expectedm,(as.numeric(actual-expected))*15,(actualm-expectedm)*500),10000))
+write(out,stdout())
+
+```
+
