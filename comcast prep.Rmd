@@ -1,0 +1,19 @@
+---
+title: "Misc Prep for Comcast"
+author: "Kevin A. Ryan (JHUAPL)"
+date: "Friday, October 23, 2015"
+output:
+  html_document:
+    highlight: textmate
+    theme: journal
+---
+
+```{r}
+library(MASS)
+library(ISLR)
+fix(Boston)
+names(Boston)
+attach(Boston)
+
+```
+
